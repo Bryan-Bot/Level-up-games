@@ -1,2 +1,22 @@
-<h1>Games#show</h1>
-<p>Find me in app/views/games/show.html.erb</p>
+<br><br>
+<img src = "<%=@game.img_url%>" width="200" height="300">
+<h1><%= @game.title %></h1>
+
+<div class="">
+<h4>Desription:</h4>
+<p><%= @game.description %></p>
+
+<p><%= "Rating: #{@game.rating} ⭐️, Price: $#{@game.price}" %></p>
+
+
+
+<%= form_for @wishlist do |f| %>
+
+<%=f.hidden_field :user_id, value: @current_user.id%>
+<%=f.hidden_field :game_id, value: @game.id%>
+
+<%= f.submit "add to Wishlist"%>
+<% end %>
+
+<hr>
+<%= link_to "home", games_path%>

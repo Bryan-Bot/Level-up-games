@@ -1,0 +1,18 @@
+<hr>
+<h1> <%= @user.user_name%> page</h1>
+<p><%=link_to "edit", edit_user_path%></p>
+<hr>
+<h3><strong>Wishlist</strong></h3>
+<ul>
+<%@user.wishlists.each do |wishlist|%>
+    <p><%= link_to wishlist.game.title, game_path(wishlist.game_id)%></p>
+    <p><img src="<%=wishlist.game.img_url%>" width="200" height="300"></p>
+    <p>Price: $<%= wishlist.game.price%></p>
+    <p>Rating: <%= wishlist.game.rating%>⭐️</p>
+    <%= button_to "Remove from Wishlist", wishlist_path(wishlist), method: :delete %>
+
+    <hr>
+<%end%>
+</ul>
+<hr>
+<%= link_to "home", games_path%>

@@ -1,0 +1,11 @@
+Add to Wishlist
+<%= form_for @wishlist do |f|%>
+
+<%=f.label :game_id%>
+<%=f. collection_select :game_id, Game.all, :id, :title%>
+
+<%=f.label :user_id%>
+<%=f.collection_select :user_id, User.all, :id, :user_name%>
+
+<%=f.submit%>
+<%end%>

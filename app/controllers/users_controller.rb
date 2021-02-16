@@ -8,21 +8,32 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
+    @user = User.create!(user_params)
+    if @user.valid?
+      session[:user_id] = @user.id
+      redirect_to games_path, notice: "Thank you for signing up!"
+    else
+      render "new"
+    end
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+
+    redirect_to user_path
   end
 
-  def delete
-  end
+  
 
   private
 
+
   def user_params
-    params.require(:user).permit(:name, :user_name, :age)
+    params.require(:user).permit(:user_name, :email_address, :password)
   end
 end

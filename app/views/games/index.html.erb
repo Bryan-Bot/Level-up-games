@@ -1,10 +1,8 @@
-
-
+<br><br>
 <ul>
 <% @games.each do |game|%>
 <li><img src = "<%=game.img_url%>" width="200" height="300"></li>
 <li><%= link_to game.title, game_path(game)%></li>
-<p><%= game.rating%></p>
-<button type="button">Add to Wishlist</button>
+<p>rating :<%= game.rating%></p>
 <%end%>
 </ul>

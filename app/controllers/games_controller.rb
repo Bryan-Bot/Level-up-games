@@ -4,6 +4,8 @@ class GamesController < ApplicationController
   end
 
   def show
+    current_user
     @game = Game.find(params[:id])
+    @wishlist = Wishlist.new
   end
 end
